@@ -31,7 +31,7 @@ Framework for managing DIY IoT devices or other IoT devices
     }
     ```
   
-  *You can change ports without problems there are no constraints*
+  **You can change ports without problems there are no constraints*
   
 - If it is your first use of this framework run "*__start.sh__*" script
 - If you just want to update the server run "*__build_and_run_dockerfile.sh__*"
