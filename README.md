@@ -56,9 +56,22 @@ Framework for managing DIY IoT devices or other IoT devices
     | /reset_password | __GET__ | To reset user password |  |  |
     | /device | __POST__ | To manage IoT devices |  |  |
 
+- Device action
+
+    | Action | Description | Request body | Response body |
+    | --- | --- | --- | --- |
+    | create | To add new device |  |  |
+    | delete | To delete a device |  |  |
+    | change_ps_name | To change name of a power strip |  |  |
+    | change_switch_name | To change name of a switch of a power strip |  |  |
+    | send | To send the action that the device will have to perform |  |  |
+    | get | To get the status of component of device |  |  |
+
 ### Supported devices
 
-- [X] My Iot devices
+- [X] [NodeMCU-SmartPowerStrip-v2](https://github.com/dj-d/NodeMCU-SmartPowerStrip-v2)
+- [X] [NodeMCU-RemoteController-v2](https://github.com/dj-d/NodeMCU-RemoteController-v2)
+- [X] [NodeMCU-LedStripController-v2](https://github.com/dj-d/NodeMCU-LedStripController-v2)
 - [ ] Philips Hue
 - [ ] Sonoff BASICR3
 - [ ] Sonoff RFR3
