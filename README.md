@@ -1,7 +1,7 @@
 # RPI-Server-v2
 Framework for managing DIY IoT devices or other IoT devices
 
-### Startup
+### First use
 
 - Change values in "*__credentials.json__*"
     
@@ -33,8 +33,28 @@ Framework for managing DIY IoT devices or other IoT devices
   
   **You can change ports without problems there are no constraints*
   
-- If it is your first use of this framework run "*__start.sh__*" script
-- If you just want to update the server run "*__build_and_run_dockerfile.sh__*"
+- Now run "*__start.sh__*" script
+
+**This script delete old containers, install dependencies, create .env file and build and run the docker-compose*
+
+### Update Server
+- To update the server run "*__build_and_run_dockerfile.sh__*" script that stop and remove old container, delete old image and build and run the new image
+
+**The DataBase and PhpMyAdmin will not be changed*
+
+### Using
+
+- API
+
+    | Endpoint | Method | Description | Request body | Response body | 
+    | --- | --- | --- | --- | --- |
+    | / | __GET__, __POST__ | To check if server is up | JSON: { name, surname, username, email, password } |  |
+    | /signup | __POST__ | To add new user |  |  |
+    | /otp_request | __POST__ | To make otp request |  |  |
+    | /login | __POST__ | To log in |  |  |
+    | /change_password | __POST__ | To change user password |  |  |
+    | /reset_password | __GET__ | To reset user password |  |  |
+    | /device | __POST__ | To manage IoT devices |  |  |
 
 ### Supported devices
 
