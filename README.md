@@ -3,7 +3,7 @@ Framework for managing DIY IoT devices or other IoT devices
 
 ### First use
 
-- Change values in "*__credentials.json__*"
+- Insert data in "*__credentials.json__*"
     
     ```json
     {
@@ -48,7 +48,7 @@ Framework for managing DIY IoT devices or other IoT devices
 
     | Endpoint | Method | Description | Request body | Response body | 
     | --- | --- | --- | --- | --- |
-    | / | __GET__, __POST__ | To check if server is up | JSON: { name, surname, username, email, password } |  |
+    | / | __GET__, __POST__ | To check if server is up | JSON: { name: str, surname: str, username: str, email: str, password: str } | JSON: { valid: bool, info: { api_key: str } } |
     | /signup | __POST__ | To add new user |  |  |
     | /otp_request | __POST__ | To make otp request |  |  |
     | /login | __POST__ | To log in |  |  |
