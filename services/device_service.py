@@ -1,5 +1,5 @@
 from models.device_model import DeviceModel, PowerStripModel
-from services.device_manager import DeviceManager
+from devices_manager.diy_device_manager import DeviceManager
 
 import hashlib
 import json
