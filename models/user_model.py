@@ -263,7 +263,7 @@ class UserModel:
                 SELECT user.email, user.api_key, otp.otp_code
                 FROM user INNER JOIN otp ON otp.api_key = user.api_key
                 WHERE user.email=%s AND user.api_key=%s AND otp.otp_code=%s
-                AND otp.otp_timestamp >= NOW() - INTERVAL 15 MINUTE
+                AND otp.otp_timestamp >= NOW() - INTERVAL 5 MINUTE
                 """
 
         try:
@@ -277,6 +277,32 @@ class UserModel:
             return False
         except mariadb.Error:
             logger.exception("user_model -> get_user_with_otp")
+
+            return False
+
+    def check_user_otp_timestamp(self, api_key):
+        """
+        Check if the last OTP was sent at least 10 minutes ago
+
+        :param api_key:
+        :return: True | False
+        """
+        query = """
+                SELECT EXISTS (
+                    SELECT name
+                    FROM user
+                    WHERE api_key=%s AND last_otp_timestamp <= NOW() - INTERVAL 10 MINUTE
+                )
+                """
+
+        try:
+            self.curs.execute(query, (api_key,))
+            res = self.curs.fetchone()
+            self.conn.commit()
+
+            return bool(res[0])
+        except mariadb.Error:
+            logger.exception("user_model -> check_user_otp_timestamp")
 
             return False
 

@@ -16,9 +16,10 @@ class EmailService:
     """
 
     def __init__(self):
-        with open('credentials.json') as json_file:
+        with open("credentials.json") as json_file:
             file = json.load(json_file)
-            self.credential = file["email"]
+
+        self.credential = file["email"]
 
         self.smtp_server = smtplib.SMTP_SSL(host=self.credential["host"], port=self.credential["port"])
         self.smtp_server.ehlo()
@@ -53,7 +54,7 @@ class EmailService:
             self.smtp_server.quit()
 
             return True
-        except smtplib.SMTPException as e:
+        except smtplib.SMTPException:
             logger.exception("email_service -> send_message")
 
             return False

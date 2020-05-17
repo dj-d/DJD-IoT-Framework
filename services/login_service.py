@@ -163,7 +163,6 @@ class LoginService:
 
                 if self.email.send_otp(email, otp_code):
                     return True
-
         else:
             logger.error("login_service -> send_otp_code")
 
@@ -181,12 +180,28 @@ class LoginService:
         return self.user_model.delete_otp(api_key, otp_code)
 
     def check_otp_requests(self, email, api_key, otp_code):
-        requests_num = self.user_model.get_otp_requests(api_key)
+        """
+        Check if the requested limit of otp has been reached
 
-        if 0 < requests_num <= 3 and self.user_model.get_user_with_otp(email, api_key, otp_code):
+        :param email:
+        :param api_key:
+        :param otp_code:
+        :return: True | False
+        """
+        if self.user_model.check_user_otp_timestamp(api_key):
+            self.user_model.reset_otp_requests(api_key)
+
+        if 0 <= self.user_model.get_otp_requests(api_key) <= 3 and self.user_model.get_user_with_otp(email, api_key, otp_code):
             return True
 
         return False
 
     def check_api_key(self, api_key):
+        """
+        Find user by:
+
+        :param api_key:
+        :return True | False
+        """
+
         return self.user_model.check_api_key(api_key)
