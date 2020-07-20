@@ -15,7 +15,7 @@ app = Flask(__name__)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
-    return "It working..."
+    return make_response(True, "It works...", 200)
 
 
 @app.route("/signup", methods=["POST"])
