@@ -1,4 +1,4 @@
-![SonarQube](https://github.com/dj-d/DJD-IoT-Framework/workflows/SonarQube/badge.svg)
+[![SonarCloud](https://github.com/dj-d/DJD-IoT-Framework/actions/workflows/sonarcloud.yml/badge.svg)](https://github.com/dj-d/DJD-IoT-Framework/actions/workflows/sonarcloud.yml)
 
 # RPI-Server-v2
 Framework for managing IoT devices
