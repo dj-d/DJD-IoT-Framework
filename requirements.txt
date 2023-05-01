@@ -1,4 +1,4 @@
-Flask==1.1.1
+Flask==2.3.2
 requests==2.22.0
 waitress==1.4.3
 validate-email==1.3
